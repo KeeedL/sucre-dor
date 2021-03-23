@@ -38,23 +38,22 @@
 <!-- Navigation
     ==========================================-->
 <nav id="menu" class="navbar navbar-default navbar-fixed-top">
-  <div class="container"> 
+  <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       <a class="navbar-brand page-scroll" href="#page-top">Sucre d'or</a> </div>
-    
+
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about" class="page-scroll">About</a></li>
-        <li><a href="#restaurant-menu" class="page-scroll">Menu</a></li>
         <li><a href="#portfolio" class="page-scroll">Gallery</a></li>
         <li><a href="#team" class="page-scroll">Chefs</a></li>
         <li><a href="#call-reservation" class="page-scroll">Contact</a></li>
       </ul>
     </div>
-    <!-- /.navbar-collapse --> 
+    <!-- /.navbar-collapse -->
   </div>
 </nav>
 <!-- Header -->
@@ -64,9 +63,9 @@
       <div class="container">
         <div class="row">
           <div class="intro-text">
-            <h1>Touché</h1>
+            <h1>Sucre d'or</h1>
             <p>Restaurant / Coffee / Pub</p>
-            <a href="#about" class="btn btn-custom btn-lg page-scroll">Discover Story</a> </div>
+            <a href="#about" class="btn btn-custom btn-lg page-scroll">Visiter le site</a> </div>
         </div>
       </div>
     </div>
@@ -91,133 +90,48 @@
     </div>
   </div>
 </div>
-<!-- Restaurant Menu Section -->
-<div id="portfolio" >
-<div class="section-title text-center center" style="background: url(img/menu-bg.jpg) center center no-repeat fixed; background-size: cover; margin-bottom: 50px;">
-    <div class="overlay">
-      <h2>Gaufres sucrées</h2>
-      <hr>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed.</p>
-    </div>
-  </div>
-  <div class="portfolio">
-    <div class="row">
-      <div class="portfolio-items">
-        <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/01-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/01-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 dinner">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/02-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/02-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/03-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/03-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Restaurant Menu Section -->
+<!-- Portfolio Section -->
 <div id="portfolio">
-  <div class="section-title text-center center" style="background: url(img/menu-bg.jpg) center center no-repeat fixed; background-size: cover; margin-bottom: 50px;">
-    <div class="overlay">
-      <h2>Gaufre salés</h2>
-      <hr>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed.</p>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="portfolio-items">
-        <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/01-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/01-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 dinner">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/02-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/02-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/03-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/03-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <?php
+    require 'intranet/lib/bddFunction.php';
+    $resultat = getCategorie();
+    foreach  ($resultat as $categorie){
+      $description = $categorie['description'];
+      $image       = $categorie['image'];
+      $categorieId = $categorie['id'];
+      $nom         = $categorie['nom'];
+
+      $produits = getProduitsByCategorie($categorieId);
+
+      echo '<div class="section-title text-center center" style="background: #444 url('. $image.') center center no-repeat fixed;	background-size: cover;">';
+        echo '<div class="overlay">';
+          echo '<h2>'. $nom .'</h2>';
+          echo '<hr>';
+          echo '<p>'. $description .'</p>';
+        echo "</div>";
+      echo "</div>";
+      echo '<div class="container">';
+        echo '<div class="row">';
+          echo '<div class="portfolio-items">';
+          foreach ($produits as $produit ) {
+            echo '<div class="col-sm-6 col-md-4 col-lg-4 breakfast">';
+              echo '<div class="portfolio-item">';
+              echo '<div class="hover-bg"> <a href="'.$produit['image'].'" title="'.$produit['nom'].'" data-lightbox-gallery="gallery1">';
+
+                echo '<img src="'.$produit['image'].'" class="img-responsive" alt="Project Title"> </a> </div>';
+              echo '</div>';
+            echo '</div>';
+
+          }
+
+      echo '</div>';
+      echo '</div>';
+      echo '</div>';
+    }
+?>
+
 </div>
-<!-- Team Section -->
-<div id="team" class="text-center">
-  <div class="overlay">
-    <div class="container">
-      <div class="col-md-10 col-md-offset-1 section-title">
-        <h2>Meet Our Chefs</h2>
-        <hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed dapibus leonec.</p>
-      </div>
-      <div id="row">
-        <div class="col-md-4 team">
-          <div class="thumbnail">
-            <div class="team-img"><img src="img/team/01.jpg" alt="..."></div>
-            <div class="caption">
-              <h3>Mike Doe</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 team">
-          <div class="thumbnail">
-            <div class="team-img"><img src="img/team/02.jpg" alt="..."></div>
-            <div class="caption">
-              <h3>Chris Doe</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 team">
-          <div class="thumbnail">
-            <div class="team-img"><img src="img/team/03.jpg" alt="..."></div>
-            <div class="caption">
-              <h3>Ethan Doe</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- Call Reservation Section -->
 <div id="call-reservation" class="text-center">
   <div class="container">
@@ -295,13 +209,13 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
-<script type="text/javascript" src="js/bootstrap.js"></script> 
-<script type="text/javascript" src="js/SmoothScroll.js"></script> 
-<script type="text/javascript" src="js/nivo-lightbox.js"></script> 
-<script type="text/javascript" src="js/jquery.isotope.js"></script> 
-<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
-<script type="text/javascript" src="js/contact_me.js"></script> 
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/SmoothScroll.js"></script>
+<script type="text/javascript" src="js/nivo-lightbox.js"></script>
+<script type="text/javascript" src="js/jquery.isotope.js"></script>
+<script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
+<script type="text/javascript" src="js/contact_me.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
