@@ -55,6 +55,20 @@ function getProduitsByCategorie($categorieId) {
   return $bdd->query($requete);
 }
 
+function getImageMagasin(){
+  $bdd = getBdd();
+  $requete = "SELECT * FROM image_magasin";
+
+  return $bdd->query($requete);
+}
+
+function getTextMagasin(){
+  $bdd = getBdd();
+  $requete = "SELECT * FROM text_magasin";
+
+  return $bdd->query($requete);
+}
+
 function getUnique($table, $column, $value) {
   $bdd = getBdd();
   $requete;

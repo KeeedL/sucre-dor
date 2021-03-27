@@ -47,10 +47,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#about" class="page-scroll">About</a></li>
-        <li><a href="#portfolio" class="page-scroll">Gallery</a></li>
-        <li><a href="#team" class="page-scroll">Chefs</a></li>
-        <li><a href="#call-reservation" class="page-scroll">Contact</a></li>
+        <li><a href="#about" class="page-scroll">Histoire</a></li>
+        <li><a href="#portfolio" class="page-scroll">Produits</a></li>
+        <li><a href="#team" class="page-scroll">Magasin</a></li>
+        <li><a href="#contact" class="page-scroll">Contact</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -111,15 +111,19 @@
         echo "</div>";
       echo "</div>";
       echo '<div class="container">';
-        echo '<div class="row">';
+        echo '<div class="row paddingCategorie">';
           echo '<div class="portfolio-items">';
           foreach ($produits as $produit ) {
             echo '<div class="col-sm-6 col-md-4 col-lg-4 breakfast">';
-              echo '<div class="portfolio-item">';
+              echo '<div class="portfolio-item resizeBloc">';
               echo '<div class="hover-bg"> <a href="'.$produit['image'].'" title="'.$produit['nom'].'" data-lightbox-gallery="gallery1">';
-
-                echo '<img src="'.$produit['image'].'" class="img-responsive" alt="Project Title"> </a> </div>';
+                echo '<div class="hover-text">';
+                  echo '<h4>'.$produit['nom'].'</h4>';
+                echo '</div>';
+                echo '<img src="'.$produit['image'].'" class="img-responsive resize" alt="Project Title"> </a> </div>';
               echo '</div>';
+              echo '<p class="alignCenter">'.$produit['nom'].'</p>';
+
             echo '</div>';
 
           }
@@ -132,13 +136,80 @@
 
 </div>
 
-<!-- Call Reservation Section -->
-<div id="call-reservation" class="text-center">
-  <div class="container">
-    <h2>Want to make a reservation? Call <strong>1-887-654-3210</strong></h2>
-  </div>
-</div>
-<!-- Contact Section -->
+<!-- Team Section -->
+<?php
+echo '<div id="team" class="text-center">';
+$imageMagasin = getImageMagasin();
+$images = [];
+foreach ($imageMagasin as $image) {
+  if($image['type'] == 'background')
+  {
+    $backgound = $image['image'];
+  }
+  else {
+    array_push($images,$image);
+  }
+}
+
+$textMagasin = getTextMagasin();
+foreach ($textMagasin as $text) {
+  if($text['type'] == 'entete')
+  {
+    $entete = $text['description'];
+  }
+  else {
+    $footer = $text['description'];
+  }
+}
+
+  echo '<div class="overlay" style="color: #fff;
+    	                   background: #444 url('.$backgound.') center top no-repeat fixed;
+    	                   background-size: cover;">';
+    echo '<div class="container">';
+      echo '<div class="col-md-10 col-md-offset-1 section-title">';
+        echo '<h2>Notre boutique</h2>
+              <hr>
+              <p>'.$entete.'</p>';
+        echo'</div>';
+        echo '<div id="row">';
+        // foreach
+        $count = 0;
+        foreach ($images as $image) {
+            echo '<div class="col-md-4 team">';
+              echo '<div class="thumbnail">';
+                echo '<div class="team-img"><img src="'.$image['image'].'" alt="..."></div>
+                      <div class="caption">';
+                    echo '<h3>'.$image['titre'].'</h3>';
+                    echo '<p>'.$image['description'].'</p>';
+                echo '</div>';
+              echo '</div>';
+            echo '</div>';
+            $count++;
+            if( $count == 3)
+            {
+              echo '</div>';
+              echo '</div>';
+              echo '<div class="container">';
+              echo '<div id="row">';
+            }
+            if( $count == 6)
+            {
+              echo '</div>';
+              echo '</div>';
+              echo '<div class="container">';
+              echo '<div id="row">';
+            }
+        }
+          //end foreach
+        echo '</div>';
+      echo '</div>';
+    echo '</div>';
+echo '</div>';
+
+
+
+?>
+
 <div id="contact" class="text-center">
   <div class="container">
     <div class="section-title text-center">
@@ -175,24 +246,23 @@
 <div id="footer">
   <div class="container text-center">
     <div class="col-md-4">
-      <h3>Address</h3>
+      <h3>Addresse</h3>
       <div class="contact-item">
-        <p>4321 California St,</p>
-        <p>San Francisco, CA 12345</p>
+        <p>64 Rue Faidherbe,</p>
+        <p> 59000 Lille</p>
       </div>
     </div>
     <div class="col-md-4">
-      <h3>Opening Hours</h3>
+      <h3>Heures d'ouverture</h3>
       <div class="contact-item">
-        <p>Mon-Thurs: 10:00 AM - 11:00 PM</p>
-        <p>Fri-Sun: 11:00 AM - 02:00 AM</p>
+        <p>Lundi-Samedi: 10:00 - 20:00 PM</p>
       </div>
     </div>
     <div class="col-md-4">
       <h3>Contact Info</h3>
       <div class="contact-item">
-        <p>Phone: +1 123 456 1234</p>
-        <p>Email: info@company.com</p>
+        <p>Tel: XX XX XX XX XX</p>
+        <p>Email: mail@mail.com</p>
       </div>
     </div>
   </div>

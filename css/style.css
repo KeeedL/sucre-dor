@@ -372,6 +372,36 @@ ol.type li a:hover {
 	overflow: hidden;
 	position: relative;
 }
+
+.paddingCategorie{
+	padding-bottom: 50px;
+}
+
+.alignCenter {
+	text-align: center;
+	font-weight: bold;
+}
+@media screen and (min-width: 900px) and (max-width: 1500px) {
+
+	.resizeBloc {
+		width: 260px;
+		height: 200px;
+	}
+
+	.resize {
+		height: 210px !important;
+	}
+
+	.paddingCategorie {
+		padding-bottom: 5Opx !important;
+	}
+
+	.alignCenter {
+		text-align: center;
+		padding-right: 34px;
+	}
+
+}
 .portfolio-item .hover-bg:before {
 	display: block;
 	content: '';
@@ -415,9 +445,7 @@ ol.type li a:hover {
 }
 /* Team Section */
 #team {
-	color: #fff;
-	background: #444 url(../img/team-bg.jpg) center top no-repeat fixed;
-	background-size: cover;
+
 }
 #team .overlay {
 	padding: 120px 0 80px 0;
@@ -437,6 +465,7 @@ ol.type li a:hover {
 }
 #team img {
 	width: 280px;
+	height: 320px;
 }
 #team .thumbnail {
 	background: transparent;
