@@ -120,11 +120,12 @@
                 echo '<img src="'.$produit['image'].'" class="img-responsive resize" alt="Project Title"> </a> </div>';
               echo '</div>';
               echo '<p class="alignCenter">'.$produit['nom'].'</p>';
-
             echo '</div>';
-
           }
 
+      echo '</div>';
+      echo '<div class="more-products-center col-md-12">';
+        echo '<button onclick="displayMore()" type="button" class="more-products-button btn">Afficher plus</button>';
       echo '</div>';
       echo '</div>';
       echo '</div>';

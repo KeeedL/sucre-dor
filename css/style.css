@@ -368,6 +368,8 @@ ol.type li a:hover {
 }
 .portfolio-item {
 	margin: 15px 0;
+	margin-left: auto;
+	margin-right: auto;
 }
 .portfolio-item .hover-bg {
 	overflow: hidden;
@@ -407,7 +409,6 @@ ol.type li a:hover {
 
 	.alignCenter {
 		text-align: center;
-		padding-right: 34px;
 	}
 
 }
@@ -648,4 +649,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#779936', end
 }
 #footer a:hover {
 	color: #333;
+}
+
+.more-products-center {
+	padding-top: 20px;
+	text-align: center;
+}
+
+.more-products-button {
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #C1AD7F;
+	border-color: #c2a35b;
+	color: white;
 }
