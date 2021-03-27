@@ -14,6 +14,8 @@
 <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
 
+<script type="text/javascript" src="js/more-products.js"></script>
+
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
@@ -98,9 +100,11 @@
       $categorieId = $categorie['id'];
       $nom         = $categorie['nom'];
 
+      $compteurProduct = 0;
+
       $produits = getProduitsByCategorie($categorieId);
 
-      echo '<div class="section-title text-center center" style="background: #444 url('. $image.') center center no-repeat fixed;	background-size: cover;">';
+      echo '<div id="'.$categorieId.'" class="section-title text-center center" style="background: #444 url('. $image.') center center no-repeat fixed;	background-size: cover;">';
         echo '<div class="overlay">';
           echo '<h2>'. $nom .'</h2>';
           echo '<hr>';
@@ -111,7 +115,8 @@
         echo '<div class="row paddingCategorie">';
           echo '<div class="portfolio-items">';
           foreach ($produits as $produit ) {
-            echo '<div class="col-sm-6 col-md-4 col-lg-4 breakfast">';
+            if($compteurProduct < 3) {
+              echo '<div class="col-sm-6 col-md-4 col-lg-4 breakfast">';
               echo '<div class="portfolio-item resizeBloc">';
               echo '<div class="hover-bg"> <a href="'.$produit['image'].'" title="'.$produit['nom'].'" data-lightbox-gallery="gallery1">';
                 echo '<div class="hover-text">';
@@ -121,11 +126,28 @@
               echo '</div>';
               echo '<p class="alignCenter">'.$produit['nom'].'</p>';
             echo '</div>';
+            } else {
+              echo '<div id="hidden-product" class="hidden-product col-sm-6 col-md-4 col-lg-4 breakfast">';
+              echo '<div class="portfolio-item resizeBloc">';
+              echo '<div class="hover-bg"> <a href="'.$produit['image'].'" title="'.$produit['nom'].'" data-lightbox-gallery="gallery1">';
+                echo '<div class="hover-text">';
+                  echo '<h4>'.$produit['nom'].'</h4>';
+                echo '</div>';
+                echo '<img src="'.$produit['image'].'" class="img-responsive resize" alt="Project Title"> </a> </div>';
+              echo '</div>';
+              echo '<p class="alignCenter">'.$produit['nom'].'</p>';
+              echo '<p class="align">'.$produit['description'].'</p>';
+            echo '</div>';
+            }
+            $compteurProduct++;
           }
+          
 
       echo '</div>';
       echo '<div class="more-products-center col-md-12">';
-        echo '<button onclick="displayMore()" type="button" class="more-products-button btn">Afficher plus</button>';
+      if( $compteurProduct > 3) {
+        echo '<button id="button-text" onclick="display()" type="button" class="btn-custom btn-lg page-scroll more-products-button btn">Afficher plus</button>';
+      }
       echo '</div>';
       echo '</div>';
       echo '</div>';
@@ -285,5 +307,6 @@ echo '</div>';
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
 <script type="text/javascript" src="js/contact_me.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+
 </body>
 </html>

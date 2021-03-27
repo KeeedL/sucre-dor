@@ -81,7 +81,3 @@ function main() {
 
 }
 main();
-
-function displayMore() {
-  window.alert("cc");
-}

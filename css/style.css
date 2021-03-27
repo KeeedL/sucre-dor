@@ -234,7 +234,6 @@ header .intro-text {
 	right: 8px;
 	bottom: 8px;
 	left: 8px;
-	border: 1px solid rgba(255, 255, 255, 0.5);
 }
 #about p {
 	line-height: 24px;
@@ -662,4 +661,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#779936', end
 	background-color: #C1AD7F;
 	border-color: #c2a35b;
 	color: white;
+}
+
+.hidden-product {
+	display: none;
 }
