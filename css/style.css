@@ -213,7 +213,7 @@ header .intro-text {
 }
 /* About Section */
 #about {
-	padding: 120px 0;
+	padding: 40px 0;
 }
 #about h3 {
 	font-size: 20px;
@@ -224,6 +224,7 @@ header .intro-text {
 #about .about-img {
 	display: inline-block;
 	position: relative;
+	width: 200px;
 }
 #about .about-img:before {
 	display: block;
@@ -380,6 +381,14 @@ ol.type li a:hover {
 .alignCenter {
 	text-align: center;
 	font-weight: bold;
+}
+
+.align {
+	text-align: center;
+}
+
+.background {
+	background-color: #dccfb1;
 }
 @media screen and (min-width: 900px) and (max-width: 1500px) {
 
