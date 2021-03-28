@@ -666,3 +666,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#779936', end
 .hidden-product {
 	display: none;
 }
+
+.portfolio-item {
+	height: 250px !important;
+}

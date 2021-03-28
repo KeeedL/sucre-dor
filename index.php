@@ -104,7 +104,7 @@
 
       $produits = getProduitsByCategorie($categorieId);
 
-      echo '<div id="'.$categorieId.'" class="section-title text-center center" style="background: #444 url('. $image.') center center no-repeat fixed;	background-size: cover;">';
+      echo '<div id="'.$categorieId.'" class="section-title text-center center" style="background: #444 url('. $image.') center center no-repeat fixed; background-size: cover;">';
         echo '<div class="overlay">';
           echo '<h2>'. $nom .'</h2>';
           echo '<hr>';
@@ -113,7 +113,8 @@
       echo "</div>";
       echo '<div class="container">';
         echo '<div class="row paddingCategorie">';
-          echo '<div class="portfolio-items">';
+          echo '<div class="portfolio-items" style="height: 250px;">';
+          
           foreach ($produits as $produit ) {
             if($compteurProduct < 3) {
               echo '<div class="col-sm-6 col-md-4 col-lg-4 breakfast">';
@@ -126,8 +127,12 @@
               echo '</div>';
               echo '<p class="alignCenter">'.$produit['nom'].'</p>';
             echo '</div>';
-            } else {
-              echo '<div id="hidden-product" class="hidden-product col-sm-6 col-md-4 col-lg-4 breakfast">';
+            }
+            if($compteurProduct == 3) {
+                echo '<div id="hidden-product" class="hidden-product">';
+            }
+            if($compteurProduct >= 3) {
+              echo '<div class="col-sm-6 col-md-4 col-lg-4 breakfast">';
               echo '<div class="portfolio-item resizeBloc">';
               echo '<div class="hover-bg"> <a href="'.$produit['image'].'" title="'.$produit['nom'].'" data-lightbox-gallery="gallery1">';
                 echo '<div class="hover-text">';
@@ -136,14 +141,17 @@
                 echo '<img src="'.$produit['image'].'" class="img-responsive resize" alt="Project Title"> </a> </div>';
               echo '</div>';
               echo '<p class="alignCenter">'.$produit['nom'].'</p>';
-              echo '<p class="align">'.$produit['description'].'</p>';
             echo '</div>';
-            }
+            } 
             $compteurProduct++;
           }
+          if($compteurProduct > 3 && $compteurProduct == $produits->rowCount()) {
+            echo '</div>';
+          }
           
-
       echo '</div>';
+
+
       echo '<div class="more-products-center col-md-12">';
       if( $compteurProduct > 3) {
         echo '<button id="button-text" onclick="display()" type="button" class="btn-custom btn-lg page-scroll more-products-button btn">Afficher plus</button>';
@@ -183,8 +191,8 @@ foreach ($textMagasin as $text) {
 }
 
   echo '<div class="overlay" style="color: #fff;
-    	                   background: #444 url('.$backgound.') center top no-repeat fixed;
-    	                   background-size: cover;">';
+                         background: #444 url('.$backgound.') center top no-repeat fixed;
+                         background-size: cover;">';
     echo '<div class="container">';
       echo '<div class="col-md-10 col-md-offset-1 section-title">';
         echo '<h2>Notre boutique</h2>
@@ -303,10 +311,11 @@ echo '</div>';
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/SmoothScroll.js"></script>
 <script type="text/javascript" src="js/nivo-lightbox.js"></script>
-<script type="text/javascript" src="js/jquery.isotope.js"></script>
+
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
 <script type="text/javascript" src="js/contact_me.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 
 </body>
 </html>
+
