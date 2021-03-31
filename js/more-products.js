@@ -1,4 +1,4 @@
-function display(idCategorie, nbProducts) {
+function display(idCategorie, nbProducts, isMobile) {
     
     //var products = document.querySelectorAll('[id=categorie-height]');
 
@@ -10,9 +10,16 @@ function display(idCategorie, nbProducts) {
     
 
     var value =  document.getElementById("categorie-"+idCategorie).getElementsByClassName("hidden-product")[0].style.display;
-    
-    var nbLigneToDisplay = nbProducts/3;
-    var ligneInPixel = nbLigneToDisplay * 312 + 312;
+    var pixelToDisplay;
+    var pixelToHide;
+
+    if(isMobile) {
+        pixelToDisplay = nbProducts * 312;
+        pixelToHide = 936;
+    } else {
+        pixelToDisplay = (nbProducts/3) * 312 + 312;
+        pixelToHide = 312;
+    }
     
     if(value == "block") {
         
@@ -25,7 +32,7 @@ function display(idCategorie, nbProducts) {
 
         //for(var i=0; i<products.length; i++) {
                 //products[2].style.height = "312px";
-                document.getElementById("categorie-"+idCategorie).getElementsByClassName("isotope")[0].style.height = "312px";
+                document.getElementById("categorie-"+idCategorie).getElementsByClassName("isotope")[0].style.height = pixelToHide+"px";
           //  }
     } else {
         //for(var i=0; i<products.length; i++) {
@@ -35,7 +42,7 @@ function display(idCategorie, nbProducts) {
         document.getElementById("categorie-"+idCategorie).getElementsByClassName("button-text")[0].innerHTML = "Affichez moins";
 
         //for(var i=0; i<products.length; i++) {
-            document.getElementById("categorie-"+idCategorie).getElementsByClassName("isotope")[0].style.height = ligneInPixel+"px";
+            document.getElementById("categorie-"+idCategorie).getElementsByClassName("isotope")[0].style.height = pixelToDisplay+"px";
         //}
 
     }

@@ -994,13 +994,13 @@
 
     _masonryGetContainerSize : function() {
       var containerHeight = Math.max.apply( Math, this.masonry.colYs );
-      return { height: containerHeight };
-    },
 
-    _masonryGetContainerSize : function() {
-      
+      if(containerHeight >= 950 ) {
+        return {
+          height: 932 };
+      } 
       return {
-         height: 312 };
+        height: 312 };
     },
 
     // ====================== fitRows ======================
@@ -1016,8 +1016,9 @@
     _fitRowsLayout : function( $elems ) {
       var instance = this,
           containerWidth = this.element.width(),
+          
           props = this.fitRows;
-
+          alert(containerWidth)
       $elems.each( function() {
         var $this = $(this),
             atomW = $this.outerWidth(true),

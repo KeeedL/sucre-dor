@@ -154,7 +154,10 @@
 
       echo '<div class="more-products-center col-md-12">';
       if( $compteurProduct > 3) {
-        echo '<button onclick="display('.$categorieId.', '.$compteurProduct.')" type="button" class="button-text btn-custom btn-lg page-scroll more-products-button btn">Afficher plus</button>';
+        $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+        $isMob = is_numeric(strpos($ua, "mobile"));
+        
+        echo '<button onclick="display('.$categorieId.', '.$compteurProduct.', '.$isMob.')" type="button" class="button-text btn-custom btn-lg page-scroll more-products-button btn">Afficher plus</button>';
       }
       echo '</div>';
       echo '</div>';
