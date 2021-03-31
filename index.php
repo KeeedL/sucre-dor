@@ -104,7 +104,7 @@
 
       $produits = getProduitsByCategorie($categorieId);
 
-      echo '<div id="'.$categorieId.'" class="section-title text-center center" style="background: #444 url('. $image.') center center no-repeat fixed; background-size: cover;">';
+      echo '<div class="section-title text-center center" style="background: #444 url('. $image.') center center no-repeat fixed; background-size: cover;">';
         echo '<div class="overlay">';
           echo '<h2>'. $nom .'</h2>';
           echo '<hr>';
@@ -112,8 +112,8 @@
         echo "</div>";
       echo "</div>";
       echo '<div class="container">';
-        echo '<div class="row paddingCategorie">';
-          echo '<div class="portfolio-items" style="height: 250px;">';
+        echo '<div id="categorie-'.$categorieId.'" class="row paddingCategorie">';
+          echo '<div class="portfolio-items">';
           
           foreach ($produits as $produit ) {
             if($compteurProduct < 3) {
@@ -154,7 +154,7 @@
 
       echo '<div class="more-products-center col-md-12">';
       if( $compteurProduct > 3) {
-        echo '<button id="button-text" onclick="display()" type="button" class="btn-custom btn-lg page-scroll more-products-button btn">Afficher plus</button>';
+        echo '<button onclick="display('.$categorieId.', '.$compteurProduct.')" type="button" class="button-text btn-custom btn-lg page-scroll more-products-button btn">Afficher plus</button>';
       }
       echo '</div>';
       echo '</div>';
@@ -311,7 +311,7 @@ echo '</div>';
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/SmoothScroll.js"></script>
 <script type="text/javascript" src="js/nivo-lightbox.js"></script>
-
+<script type="text/javascript" src="js/jquery.isotope.js"></script>
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
 <script type="text/javascript" src="js/contact_me.js"></script>
 <script type="text/javascript" src="js/main.js"></script>

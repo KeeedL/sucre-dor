@@ -997,8 +997,10 @@
       return { height: containerHeight };
     },
 
-    _masonryResizeChanged : function() {
-      return this._checkIfSegmentsChanged();
+    _masonryGetContainerSize : function() {
+      
+      return {
+         height: 312 };
     },
 
     // ====================== fitRows ======================
