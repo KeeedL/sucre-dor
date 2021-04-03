@@ -15,11 +15,11 @@ echo '
             </li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gerer les menus <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gerer les produits <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Menu</li>
-                    <li><a href="ajoutCategorie.php">Ajouter un menu</a></li>
-                    <li><a href="modifierMenu.php">Modifier les menus</a></li>
+                    <li class="dropdown-header">Produits</li>
+                    <li><a href="produit_ajout.php">Ajouter un produit</a></li>
+                    <li><a href="produit_afficher.php">Modifier les produits</a></li>
                 </ul>
             </li>
             <li class="dropdown">

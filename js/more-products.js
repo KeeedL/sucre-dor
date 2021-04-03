@@ -22,7 +22,7 @@ function display(idCategorie, nbProducts, isMobile) {
         pixelToDisplay = nbProducts * 312;
         pixelToHide = 936;
     } else {
-        pixelToDisplay = (nbProducts/3) * 312 + 212;
+        pixelToDisplay = (nbProducts/3) * 312 + 200;
         pixelToHide = 312;
     }
     

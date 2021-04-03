@@ -59,28 +59,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <?php
-                                    require 'lib/bddFunction.php';
-                                    $resultat = getVisitor();
-                                    $count = 0;
-                                    foreach  ($resultat as $page){
-                                      $count++;
-                                      $pageName = $page['name'];
-                                      $totalViews = $page['total_views'];
-                                      $uniqueView;
-                                      $unique = getVisitorUnique($pageName);
-                                      foreach ($unique as $visitor ) {
-                                        $uniqueView = $visitor['visitors'];
-                                        echo '<tr>
-                                                  <th scope="row">'. $count .'</th>
-                                                  <td>' . $pageName . '</td>
-                                                  <td>' . $uniqueView . '</td>
-                                                  <td>' . $totalViews . '</td>
-                                              </tr>';
-                                      }
-
-                                    }
-                                  ?>
+                                  
                                 </tbody>
                             </table>
                         </div>
