@@ -994,8 +994,9 @@
 
     _masonryGetContainerSize : function() {
       var containerHeight = Math.max.apply( Math, this.masonry.colYs );
+      var containerWidth = window.screen.width;
 
-      if(containerHeight >= 950 ) {
+      if(containerHeight >= 900 && containerWidth <= 600 ) {
         return {
           height: 932 };
       } 
