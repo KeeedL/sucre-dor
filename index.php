@@ -129,10 +129,11 @@
             echo '</div>';
             }
             if($compteurProduct == 3) {
-                echo '<div id="hidden-product" class="hidden-product">';
+                //echo '<div id="hidden-product" class="hidden-product">';
             }
             if($compteurProduct >= 3) {
-              echo '<div class="col-sm-6 col-md-4 col-lg-4 breakfast">';
+              echo '<div id="hidden-product" class="hidden-product col-sm-6 col-md-4 col-lg-4 breakfast">';
+
               echo '<div class="portfolio-item resizeBloc">';
               echo '<div class="hover-bg"> <a href="'.$produit['image'].'" title="'.$produit['nom'].'" data-lightbox-gallery="gallery1">';
                 echo '<div class="hover-text">';
@@ -146,7 +147,7 @@
             $compteurProduct++;
           }
           if($compteurProduct > 3 && $compteurProduct == $produits->rowCount()) {
-            echo '</div>';
+            
           }
           
       echo '</div>';
