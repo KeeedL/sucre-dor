@@ -36,8 +36,19 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-<!-- Navigation
+<?php
+  require 'intranet/lib/bddFunction.php';
+  $resultat = getImageByType('background');
+  $backgound;
+  foreach  ($resultat as $image){
+    $backgound = $image['image'];
+  }
+
+  echo "<body id='page-top' data-spy='scroll' data-target='.navbar-fixed-top' style='font-family: ".'Raleway' . ", sans-serif; text-rendering: optimizeLegibility !important; -webkit-font-smoothing: antialiased !important; color: #777; font-weight: 300; width: 100% !important; height: 100% !important; background-image: url(".$backgound.") !important;'>";
+  ?>
+
+
+  <!-- Navigation
     ==========================================-->
 <nav id="menu" class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -60,8 +71,25 @@
 </nav>
 <!-- Header -->
 <header id="header">
-  <div class="intro">
-    <div class="overlay">
+</head>
+<?php
+  $resultat = getImageByType('accueil');
+  $accueil;
+  foreach  ($resultat as $image){
+    $accueil = $image['image'];
+  }
+
+  echo "<div class='intro' style='display: table;
+  	width: 100%;
+  	padding: 0;
+  	background: url(".$accueil.") no-repeat center center;
+  	background-color: #e5e5e5;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	background-size: cover;
+  	-o-background-size: cover;'>";
+  ?>
+  <div class="overlay">
       <div class="container">
         <div class="row">
           <div class="intro-text">
@@ -80,8 +108,13 @@
       <div class="col-xs-12 col-md-8 col-md-offset-2">
         <div class="about-img"><img src="img/gaufrette.png" class="img-responsive" alt=""></div>
         <div class="about-text">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam commodo nibh.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare.</p>
+          <?php
+            $resultat = getHistoire();
+            foreach  ($resultat as $histoire){
+              $histoire = $histoire['histoire'];
+              echo '<p>'.$histoire.'</p>';
+            }
+          ?>
         </div>
       </div>
 
@@ -92,7 +125,6 @@
 <!-- Portfolio Section -->
 <div id="portfolio">
   <?php
-    require 'intranet/lib/bddFunction.php';
     $resultat = getCategorie();
     foreach  ($resultat as $categorie){
       $description = $categorie['description'];
@@ -114,7 +146,7 @@
       echo '<div class="container">';
         echo '<div id="categorie-'.$categorieId.'" class="row paddingCategorie">';
           echo '<div class="portfolio-items">';
-          
+
           foreach ($produits as $produit ) {
             if($compteurProduct < 3) {
               echo '<div class="col-sm-6 col-md-4 col-lg-4 breakfast">';
@@ -143,13 +175,13 @@
               echo '</div>';
               echo '<p class="alignCenter">'.$produit['nom'].'</p>';
             echo '</div>';
-            } 
+            }
             $compteurProduct++;
           }
           if($compteurProduct > 3 && $compteurProduct == $produits->rowCount()) {
-            
+
           }
-          
+
       echo '</div>';
 
 
@@ -157,7 +189,7 @@
       if( $compteurProduct > 3) {
         $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
         $isMob = is_numeric(strpos($ua, "mobile"));
-        
+
         echo '<button onclick="display('.$categorieId.', '.$compteurProduct.', '.$isMob.')" type="button" class="button-text btn-custom btn-lg page-scroll more-products-button btn">Afficher plus</button>';
       }
       echo '</div>';
@@ -322,4 +354,3 @@ echo '</div>';
 
 </body>
 </html>
-

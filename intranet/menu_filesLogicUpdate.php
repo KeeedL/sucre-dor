@@ -1,11 +1,11 @@
 <?php
 // connect to the database
 require 'lib/bddFunction.php';
-$bdd = getBdd();
 if( !isset($_POST['categorie']) || !isset($_POST['nom'])) {
   $message = "Des champs requis sont manquants";
   echo "<script type='text/javascript'>alert('$message');</script>";
 }
+$bdd = getBdd();
 
 $nom         = $bdd->quote($_POST['nom']);
 $description = 'NULL';
@@ -29,14 +29,14 @@ foreach ($keys as $key) {
       $id = $key;
     }
   }
-  
+
   if( $_FILES['myfile']['name'] ) {
     $filename    = $_FILES['myfile']['name'];
-  
-    $destination = '../img/' . $filename;  
+
+    $destination = '../img/' . $filename;
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
     $file = $_FILES['myfile']['tmp_name'];
-  
+
     if (!in_array($extension, ['pdf', 'jpeg', 'jpg', 'png']))
     {
         echo "You file extension must be .zip, .pdf or .docx";
@@ -48,7 +48,7 @@ foreach ($keys as $key) {
       // move the uploaded (temporary) file to the specified destination
       if (move_uploaded_file($file, $destination))
       {
-          
+
           $destination = 'img/' . $filename;
 
           $sql = "UPDATE `produit` SET `nom`=$nom,`description`=$description,`categorie_id`=$categorie,`prix`=$prix,`image`= '$destination' WHERE id =$id";

@@ -11,7 +11,7 @@ echo '
                 </a>
             </li>
             <li>
-                <a href="index.php">Dashboard</a>
+                <a href="index.php">Accueil</a>
             </li>
 
             <li class="dropdown">
@@ -23,15 +23,21 @@ echo '
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gerer les promotions <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gerer les categories <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Promotions</li>
-                    <li><a href="ajoutSpectacle.php">Ajouter une promotion</a></li>
-                    <li><a href="modifierSpectacle.php">Modifier les promotions</a></li>
+                    <li class="dropdown-header">Gerer les categories</li>
+                    <li><a href="ajoutCategorie.php">Ajout categorie</a></li>
+                    <li><a href="modifier_categorie.php">Modifier les categories</a></li>
                 </ul>
             </li>
             <li>
-                <a href="theatre.php">Slider</a>
+                <a href="modifier_histoire.php">Modifier histoire</a>
+            </li>
+            <li>
+                <a href="modifier_magasin.php">Magasin</a>
+            </li>
+            <li>
+                <a href="modifier_image.php">Images de fonds</a>
             </li>
         </ul>
     </nav>

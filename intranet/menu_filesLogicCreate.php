@@ -1,11 +1,11 @@
 <?php
 // connect to the database
 require 'lib/bddFunction.php';
-$bdd = getBdd();
 if( !isset($_POST['categorie']) || !isset($_POST['nom'])) {
   $message = "Des champs requis sont manquants";
   echo "<script type='text/javascript'>alert('$message');</script>";
 }
+$bdd = getBdd();
 
 $nom         = $bdd->quote($_POST['nom']);
 $description = 'NULL';
@@ -24,7 +24,7 @@ $categorie   = $_POST['categorie'];
 if( $_FILES['myfile']['name'] ){
   $filename    = $_FILES['myfile']['name'];
 
-  $destination = '../img/' . $filename;  
+  $destination = '../img/' . $filename;
   $extension = pathinfo($filename, PATHINFO_EXTENSION);
   $file = $_FILES['myfile']['tmp_name'];
 
@@ -38,7 +38,7 @@ if( $_FILES['myfile']['name'] ){
       if (move_uploaded_file($file, $destination))
       {
         $destination = 'img/' . $filename;
-      
+
           $sql = "INSERT INTO `produit`(`nom`, `description`, `categorie_id`, `prix`, `image`) VALUES ($nom, $description, $categorie, $prix, '$destination')";
 
           $return = $bdd->prepare($sql);

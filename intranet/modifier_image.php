@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sucre d'or</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Conference project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="lib/ckeditor/ckeditor.js"></script>
+    <script src="js/bar-menu.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <link rel="stylesheet" type="text/css" href="styles/custom.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+
+<!------ Include the above in your HEAD tag ---------->
+<div id="wrapper">
+  <?php
+    include('admin_menu.php');
+
+    session_start();
+    if ($_SESSION['authOK'] != 1) {
+        header('Location: authent.php');
+    }
+  ?>
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+        <div class="container">
+          <div class="col-sm-9">
+            <h1 class="title">Modifer les images de fonds</h1>
+        </div>
+          <section class="pb-5 header text-center">
+            <div class="container py-5 text-white">
+          <div class="row">
+              <div class="col-lg-10 mx-auto">
+                  <div class="card border-0 shadow">
+                      <div class="card-body p-5">
+                      <?php
+                          $count = 0;
+                          require 'lib/bddFunction.php';
+                          $bdd = getBdd();
+                          $images = getImages();
+
+                          foreach( $images as $image )
+                          {
+                              //Responsive table
+                              echo '
+                              <div class="table-responsive">
+                                  <table class="table m-0">
+                                      <thead>
+                                          <h2 style="margin-top: 100px;">'. $image['type'] .'</h2>
+                                          <tr>
+                                              <th scope="col">#</th>
+                                              <th class="align-text" scope="col">Image</th>
+                                              <th class="align-text reduce" scope="col">Modifier</th>
+                                              <th scope="col"></th>
+
+                                          </tr>
+                                      </thead>
+                                      <tbody>';
+
+                                        $count++;
+                                        echo '<tr>
+                                                <form action="edit_image.php" method="post" enctype="multipart/form-data">
+                                                  <th scope="row">'. $count .'</th>
+                                                  <td><img class="sizeImage" src="../' . $image['image'] . '"></td>
+                                                  <td>
+                                                    <div class="form-group">
+                                                      <label for="myfile">Uploader limage : </label>
+                                                      <input type="file" name="myfile"> <br>
+                                                    </div>
+                                                  </td>
+                                                  <td>
+                                                    <!-- Call to action buttons -->
+                                                    <ul class="list-inline m-0">
+                                                        <li class="list-inline-item">
+                                                        <button name="'. $image['id'] .'" type="submit" type="button" class="btn btn-labeled btn-success">
+                                                          <span class="btn-label"><i class="glyphicon glyphicon-floppy-save"></i></span>   Modifier
+                                                        </button>
+                                                        </li>
+                                                    </ul>
+                                                   </form>
+
+                                                  </td>
+                                              </tr>';
+
+                                    }
+                                    ?>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+</body>
+</html>

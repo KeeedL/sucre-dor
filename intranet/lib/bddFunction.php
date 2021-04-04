@@ -41,6 +41,20 @@ function getCategorie() {
   return $bdd->query($requete);
 }
 
+function getImages() {
+  $bdd = getBdd();
+  $requete = "SELECT * FROM images";
+
+  return $bdd->query($requete);
+}
+
+function getImagesMagasin() {
+  $bdd = getBdd();
+  $requete = "SELECT * FROM image_magasin";
+
+  return $bdd->query($requete);
+}
+
 function getProduits() {
   $bdd = getBdd();
   $requete = "SELECT * FROM produit";
@@ -62,9 +76,24 @@ function getImageMagasin(){
   return $bdd->query($requete);
 }
 
+function getHistoire(){
+  $bdd = getBdd();
+  $requete = "SELECT * FROM histoire";
+
+  return $bdd->query($requete);
+}
+
+
 function getTextMagasin(){
   $bdd = getBdd();
   $requete = "SELECT * FROM text_magasin";
+
+  return $bdd->query($requete);
+}
+
+function getImageByType($type){
+  $bdd = getBdd();
+  $requete = "SELECT * FROM images where type = '$type'";
 
   return $bdd->query($requete);
 }
