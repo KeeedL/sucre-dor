@@ -404,6 +404,37 @@ ol.type li a:hover {
 	}
 
 }
+
+@media screen and (min-width: 100px) and (max-width: 700px) {
+
+	.resizeBloc {
+		width: 260px;
+		height: 200px;
+	}
+
+	.resize {
+		height: 210px !important;
+	}
+
+	.row {
+    margin-right: -15px;
+    margin-left: -15px;
+	}
+
+	.paddingCategorie {
+		padding-bottom: 5Opx !important;
+	}
+	.alignCenter {
+		text-align: center;
+	}
+
+	.centerElement {
+    margin-left: 40px;
+	}
+
+
+}
+
 .portfolio-item .hover-bg:before {
 	display: block;
 	content: '';

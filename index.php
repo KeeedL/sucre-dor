@@ -145,7 +145,7 @@
       echo "</div>";
       echo '<div class="container">';
         echo '<div id="categorie-'.$categorieId.'" class="row paddingCategorie">';
-          echo '<div class="portfolio-items">';
+          echo '<div class="portfolio-items centerElement">';
 
           foreach ($produits as $produit ) {
             if($compteurProduct < 3) {
