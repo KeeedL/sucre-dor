@@ -27,6 +27,13 @@
 <div id="wrapper">
   <?php
     include('lib/bddFunction.php');
+
+    include('admin_menu.php');
+
+    session_start();
+    if ($_SESSION['authOK'] != 1) {
+        header('Location: authent.php');
+    }
   ?>
 
     <!-- Page Content -->
