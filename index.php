@@ -136,7 +136,16 @@
 
       $produits = getProduitsByCategorie($categorieId);
 
-      echo '<div class="section-title text-center center" style="background: #444 url('. $image.') center center no-repeat fixed; background-size: cover;">';
+      $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+      $isMob = is_numeric(strpos($ua, "mobile"));
+
+      if($isMob) {
+        echo '<div class="section-title text-center center" style="background: #444 url('. $image.') center; background-size: cover; ">';
+      } else {
+          echo '<div class="section-title text-center center" style="background: #444 url('. $image.') center center no-repeat fixed; background-size: cover;">';
+      }
+
+
         echo '<div class="overlay">';
           echo '<h2>'. $nom .'</h2>';
           echo '<hr>';
@@ -225,10 +234,19 @@ foreach ($textMagasin as $text) {
     $footer = $text['description'];
   }
 }
+$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+$isMob = is_numeric(strpos($ua, "mobile"));
 
+if($isMob) {
+  echo '<div class="overlay" style="color: #fff;
+                         background: #444 url('.$backgound.') center top no-repeat fixed;
+                         >';
+} else {
   echo '<div class="overlay" style="color: #fff;
                          background: #444 url('.$backgound.') center top no-repeat fixed;
                          background-size: cover;">';
+  }
+
     echo '<div class="container">';
       echo '<div class="col-md-10 col-md-offset-1 section-title">';
         echo '<h2>Notre boutique</h2>
