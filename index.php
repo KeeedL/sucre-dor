@@ -357,7 +357,7 @@ echo '</div>';
           <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
         </ul>
       </div>
-      <p>&copy; 2016 Touché. All rights reserved. Designed by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a></p>
+      <p></p>
     </div>
   </div>
 </div>
